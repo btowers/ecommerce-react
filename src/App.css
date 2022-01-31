@@ -6,6 +6,13 @@
   height: 40vmin;
   pointer-events: none;
 }
+.smallButton {
+  width: 30px;
+}
+
+.counter {
+  max-width: 50px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
