@@ -10,6 +10,12 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     }
   };
 
+  const handleDecrease = () => {
+    if (count > initial) {
+      setCount(count - 1);
+    }
+  };
+
   return (
     <>
       <Form className="m-3">
@@ -27,7 +33,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             readOnly
             size="sm"
             type="email"
-            placeholder={count}
+            placeholder={handleDecrease}
           />
           <Button
             variant="primary"

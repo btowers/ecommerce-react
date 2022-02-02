@@ -1,17 +1,24 @@
-import React from 'react';
-import { Alert } from 'react-bootstrap';
-import ItemCount from './ItemCount';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import ItemList from './ItemList';
 
 const ItemListContainer = (prop) => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://fakestoreapi.com/products')
+      .then((res) => {
+        console.log(res.data);
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
-      <Alert variant="success" className="m-3">
-        <Alert.Heading>¡Hola!</Alert.Heading>
-        <p>{prop.greeting}</p>
-      </Alert>
-      <ItemCount stock={10} initial={0} />
-      <ItemCount stock={5} initial={0} />
-      <ItemCount stock={30} initial={0} />
+      <ItemList users={users} />
     </>
   );
 };

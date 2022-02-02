@@ -1,20 +1,7 @@
-import React from "react";
-import { Navbar } from "react-bootstrap";
+import React from 'react';
 
 const CartWidget = () => {
-  return (
-    <>
-      <Navbar.Brand href="#home">
-        <img
-          src="/logo.png"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-          alt="logo"
-        />
-      </Navbar.Brand>
-    </>
-  );
+  return <></>;
 };
 
 export default CartWidget;
