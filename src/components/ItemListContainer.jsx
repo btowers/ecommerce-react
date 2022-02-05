@@ -3,22 +3,22 @@ import axios from "axios";
 import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
-  const [users, setUsers] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
       .then((res) => {
-        console.log(res.data);
-        setUsers(res.data);
+        setItems(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
   return (
     <>
-      <ItemList users={users} />
+      <ItemList items={items} />
     </>
   );
 };

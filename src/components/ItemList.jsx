@@ -1,19 +1,19 @@
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
+import { Container } from "@mui/material";
 import Item from "./Item";
 
-const ItemList = ({ users }) => {
+const ItemList = ({ items }) => {
   return (
     <>
       <Container sx={{ py: 8 }} maxWidth="md">
         <Grid container spacing={4}>
-          {users.map((user) => (
+          {items.map((item) => (
             <Item
-              pictureUrl={user.image}
-              price={user.price}
-              title={user.title}
-              id={user.id}
-              key={user.id}
+              pictureUrl={item.image}
+              price={item.price}
+              title={item.title}
+              id={item.id}
+              key={item.id}
             />
           ))}
         </Grid>
