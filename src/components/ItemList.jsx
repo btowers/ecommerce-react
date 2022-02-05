@@ -1,6 +1,6 @@
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import Item from './Item';
+import Grid from "@mui/material/Grid";
+import { Container } from "@mui/material";
+import Item from "./Item";
 
 const ItemList = ({ items }) => {
   return (

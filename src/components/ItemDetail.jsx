@@ -1,26 +1,49 @@
-import { Card, Typography, CardContent, CardMedia } from "@mui/material";
+import {
+  Card,
+  Typography,
+  CardContent,
+  CardMedia,
+  Rating,
+  Button,
+} from "@mui/material";
 
-const ItemDetail = ({ title, price, pictureUrl }) => {
+const ItemDetail = ({ title, price, rating, pictureUrl }) => {
   return (
     <>
       <Card
+        className="m-3 p-3"
         sx={{
           height: "100%",
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
+          width: "100%",
+          maxWidth: "800px",
         }}
       >
         <CardMedia
           component="img"
-          sx={{ width: 200, height: 200 }}
+          sx={{ width: 400, height: 400 }}
           image={pictureUrl}
           alt={title}
         />
-        <CardContent sx={{ flexGrow: 1 }}>
-          <Typography noWrap gutterBottom variant="h5" component="h2">
-            {title}
-          </Typography>
-          <Typography>${price}</Typography>
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            flexGrow: 1,
+          }}
+        >
+          <div>
+            <Typography variant="h4" component="h2">
+              {title}
+            </Typography>
+            <Typography variant="h6">$ {price}</Typography>
+            <Rating name="size-small" value={rating} size="medium" />
+          </div>
+          <div>
+            <Button variant="contained">Comprar</Button>
+          </div>
         </CardContent>
       </Card>
     </>
