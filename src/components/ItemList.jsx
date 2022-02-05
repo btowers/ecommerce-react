@@ -1,6 +1,6 @@
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import Item from './Item';
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import Item from "./Item";
 
 const ItemList = ({ users }) => {
   return (
@@ -13,6 +13,7 @@ const ItemList = ({ users }) => {
               price={user.price}
               title={user.title}
               id={user.id}
+              key={user.id}
             />
           ))}
         </Grid>
