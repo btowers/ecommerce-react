@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import ItemList from './ItemList';
-import ItemDetailContainer from './ItemDetailContainer';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ItemList from "./ItemList";
+import ItemDetailContainer from "./ItemDetailContainer";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios
-      .get('https://fakestoreapi.com/products')
+      .get("https://fakestoreapi.com/products")
       .then((res) => {
         console.log(res.data);
         setItems(res.data);
@@ -21,7 +21,7 @@ const ItemListContainer = () => {
   return (
     <>
       <ItemList items={items} />
-      <ItemDetailContainer item={{ id: 1 }} />
+      <ItemDetailContainer id="1" />
     </>
   );
 };
