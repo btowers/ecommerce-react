@@ -24,7 +24,6 @@ const ItemDetailContainer = () => {
     axios
       .get('https://fakestoreapi.com/products/' + id)
       .then((res) => {
-        console.log(res);
         setItem(res.data);
         setLoading(false);
       })

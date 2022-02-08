@@ -8,9 +8,8 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const params = useParams();
-  let category = params.category;
-  if (category) category = 'category/' + category;
-  else category = '';
+  let category = '';
+  if (params.category) category = 'category/' + params.category;
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +22,7 @@ const ItemListContainer = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [category]);
 
   return <>{loading ? <Loading /> : <ItemList items={items} />}</>;
 };
