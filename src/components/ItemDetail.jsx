@@ -6,7 +6,7 @@ import {
   Rating,
   Button,
   Container,
-} from "@mui/material";
+} from '@mui/material';
 
 const ItemDetail = ({ title, price, rating, pictureUrl }) => {
   return (
@@ -15,11 +15,11 @@ const ItemDetail = ({ title, price, rating, pictureUrl }) => {
         <Card
           className="m-3 p-3"
           sx={{
-            height: "100%",
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            maxWidth: "800px",
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            maxWidth: '800px',
           }}
         >
           <CardMedia
@@ -30,9 +30,9 @@ const ItemDetail = ({ title, price, rating, pictureUrl }) => {
           />
           <CardContent
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
               flexGrow: 1,
             }}
           >
@@ -44,7 +44,7 @@ const ItemDetail = ({ title, price, rating, pictureUrl }) => {
               <Rating name="size-small" value={rating} size="medium" />
             </div>
             <div>
-              <Button variant="contained">Comprar</Button>
+              <Button variant="contained">Agregar</Button>
             </div>
           </CardContent>
         </Card>

@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Products', 'Pricing'];
+const pages = ['jewelery', 'electronics'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -23,15 +23,24 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
 
+  const goHome = () => {
+    window.location.href = '/';
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
+            onClick={goHome}
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              cursor: 'pointer',
+            }}
           >
             eCommerce
           </Typography>
@@ -83,6 +92,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
+                href={`/category/${page}`}
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
