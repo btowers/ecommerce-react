@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ItemList from "./ItemList";
 import Loading from "./Loading";
+import ItemCount from "./ItemCount";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -20,7 +21,12 @@ const ItemListContainer = () => {
       });
   }, []);
 
-  return <>{loading ? <Loading /> : <ItemList items={items} />}</>;
+  return (
+    <>
+      {loading ? <Loading /> : <ItemList items={items} />}
+      <ItemCount />
+    </>
+  );
 };
 
 export default ItemListContainer;
