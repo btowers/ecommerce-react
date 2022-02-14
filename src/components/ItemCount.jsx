@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, Box, Stack } from "@mui/material";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(initial);
 
   const handleAdd = () => {
+    console.log(count);
     if (count < stock) {
       setCount(count + 1);
     }
@@ -18,32 +19,56 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
   return (
     <>
-      <Button
-        variant="outlined"
-        size="sm"
-        className="smallButton"
-        onClick={handleAdd}
-      >
-        +
-      </Button>
-      <TextField
-        id="outlined-basic"
-        label="Outlined"
-        variant="outlined"
-        placeholder={handleDecrease}
-      />
-      <Button
-        variant="outlined"
-        size="sm"
-        className="smallButton"
-        onClick={handleAdd}
-      >
-        -
-      </Button>
+      <Stack spacing={2}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            maxWidth: "200px",
+            gap: 1,
+          }}
+        >
+          <Button
+            disableRipple
+            variant="outlined"
+            className="smallButton"
+            onClick={handleAdd}
+          >
+            +
+          </Button>
+          <Box
+            sx={{
+              width: "100%",
+              textAlign: "center",
+              maxWidth: "50px",
+            }}
+          >
+            {count}
+          </Box>
 
-      <Button variant="primary" size="sm mt-2">
-        Agregar
-      </Button>
+          <Button disableRipple variant="outlined" onClick={handleDecrease}>
+            -
+          </Button>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            maxWidth: "200px",
+            gap: 1,
+          }}
+        >
+          <Button
+            disableRipple
+            variant="contained"
+            onClick={() => onAdd(count)}
+          >
+            Agregar
+          </Button>
+        </Box>
+      </Stack>
     </>
   );
 };

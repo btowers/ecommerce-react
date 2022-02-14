@@ -1,14 +1,21 @@
+import React, { useState } from "react";
 import {
   Card,
   Typography,
   CardContent,
   CardMedia,
   Rating,
-  Button,
   Container,
 } from "@mui/material";
+import ItemCount from "./ItemCount";
 
 const ItemDetail = ({ title, price, rating, pictureUrl }) => {
+  const [itemsInCart, setItemsInCart] = useState(0);
+
+  const onAdd = (quantityToAdd) => {
+    setItemsInCart(itemsInCart + quantityToAdd);
+  };
+
   return (
     <>
       <Container sx={{ py: 8 }} maxWidth="md">
@@ -43,9 +50,7 @@ const ItemDetail = ({ title, price, rating, pictureUrl }) => {
               <Typography variant="h6">$ {price}</Typography>
               <Rating name="size-small" value={rating} size="medium" />
             </div>
-            <div>
-              <Button variant="contained">Comprar</Button>
-            </div>
+            <ItemCount stock={10} initial={1} onAdd={onAdd} />
           </CardContent>
         </Card>
       </Container>

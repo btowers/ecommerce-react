@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ItemDetail from "./ItemDetail";
-import Loading from "./Loading";
+import Loading from "./Base/Loading";
+import { useParams } from "react-router-dom";
 
-const ItemDetailContainer = ({ id }) => {
+const ItemDetailContainer = () => {
   const [item, setItem] = useState({
     title: "",
     price: 0,
@@ -15,11 +16,15 @@ const ItemDetailContainer = ({ id }) => {
   });
   const [loading, setLoading] = useState(false);
 
+  let params = useParams();
+  let id = params.id;
+
   useEffect(() => {
     setLoading(true);
     axios
       .get("https://fakestoreapi.com/products/" + id)
       .then((res) => {
+        console.log(res.data);
         setItem(res.data);
         setLoading(false);
       })

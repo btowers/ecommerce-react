@@ -1,8 +1,9 @@
-import React from "react";
-import NavBar from "./components/NavBar";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import ItemListContainer from "./components/ItemListContainer";
+import React from "react";
+import NavBar from "./components/Base/NavBar";
+import Home from "./views/Home/Home";
+import ItemDetail from "./views/ItemDetail/ItemDetail";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -10,12 +11,9 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/">
-            <ItemListContainer />
-          </Route>
-          <Route path="/item/:id">
-            <ItemListContainer />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:category" element={<Home />} />
+          <Route path="/item/:id" element={<ItemDetail />} />
         </Routes>
       </Router>
     </>
