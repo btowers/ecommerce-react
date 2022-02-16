@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import ItemDetail from "./ItemDetail";
-import Loading from "./Base/Loading";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import ItemDetail from './ItemDetail';
+import Loading from './Base/Loading';
+import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({
-    title: "",
+    title: '',
     price: 0,
-    pictureUrl: "",
+    pictureUrl: '',
     rating: {
       rate: 0,
       count: 0,
@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://fakestoreapi.com/products/" + id)
+      .get('https://fakestoreapi.com/products/' + id)
       .then((res) => {
         console.log(res.data);
         setItem(res.data);
@@ -39,6 +39,7 @@ const ItemDetailContainer = () => {
         <Loading />
       ) : (
         <ItemDetail
+          id={item.id}
           title={item.title}
           price={item.price}
           pictureUrl={item.image}

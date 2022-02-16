@@ -1,13 +1,14 @@
-import "./App.css";
-import React from "react";
-import NavBar from "./components/Base/NavBar";
-import Home from "./views/Home/Home";
-import ItemDetail from "./views/ItemDetail/ItemDetail";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import './App.css';
+import React from 'react';
+import NavBar from './components/Base/NavBar';
+import Home from './views/Home/Home';
+import ItemDetail from './views/ItemDetail/ItemDetail';
+import { CartProvider } from './context/CartContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Router>
         <NavBar />
         <Routes>
@@ -16,7 +17,7 @@ function App() {
           <Route path="/item/:id" element={<ItemDetail />} />
         </Routes>
       </Router>
-    </>
+    </CartProvider>
   );
 }
 

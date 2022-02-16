@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 import {
   Card,
   Typography,
@@ -10,12 +11,13 @@ import {
 } from '@mui/material';
 import ItemCount from './ItemCount';
 
-const ItemDetail = ({ title, price, rating, pictureUrl }) => {
-  const [itemsInCart, setItemsInCart] = useState(0);
+const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
   const [finish, setFinish] = useState(false);
 
+  const { addItem } = useContext(CartContext);
+
   const onAdd = (quantityToAdd) => {
-    setItemsInCart(itemsInCart + quantityToAdd);
+    addItem({ id, title, price, rating, pictureUrl }, quantityToAdd);
     setFinish(true);
   };
 
@@ -59,9 +61,7 @@ const ItemDetail = ({ title, price, rating, pictureUrl }) => {
             </div>
             {finish ? (
               <>
-                <Typography>
-                  {itemsInCart} item(s) agregado(s) al carrito
-                </Typography>
+                <Typography>item(s) agregado(s) al carrito</Typography>
                 <Button
                   variant="contained"
                   color="primary"
