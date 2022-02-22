@@ -23,6 +23,7 @@ const Cart = () => {
       return total + item.quantity * item.price;
     }, 0);
   };
+  console.log(itemsInCart);
 
   return (
     <>

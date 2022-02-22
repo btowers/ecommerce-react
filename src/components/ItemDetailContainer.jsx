@@ -29,7 +29,6 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setLoading(true);
     const getProduct = async () => {
-      console.log(id);
       const q = query(
         collection(db, 'ItemCollection'),
         where(documentId(), '==', id)
@@ -40,8 +39,8 @@ const ItemDetailContainer = () => {
         console.log('No matching documents.');
         return;
       }
-      console.log(querySnapshot.docs);
-      setItem(querySnapshot.docs[0].data());
+      const product = querySnapshot.docs[0].data();
+      setItem({ ...product, id });
     };
     getProduct();
     setLoading(false);
