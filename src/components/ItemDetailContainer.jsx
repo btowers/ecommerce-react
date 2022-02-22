@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import ItemDetail from './ItemDetail';
 import Loading from './Base/Loading';
 import { useParams } from 'react-router-dom';
+import { db } from '../firebase/firebaseConfig';
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  documentId,
+} from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({
@@ -21,16 +28,23 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get('https://fakestoreapi.com/products/' + id)
-      .then((res) => {
-        console.log(res.data);
-        setItem(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const getProduct = async () => {
+      console.log(id);
+      const q = query(
+        collection(db, 'ItemCollection'),
+        where(documentId(), '==', id)
+      );
+      console.log('getting docs');
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot.empty) {
+        console.log('No matching documents.');
+        return;
+      }
+      console.log(querySnapshot.docs);
+      setItem(querySnapshot.docs[0].data());
+    };
+    getProduct();
+    setLoading(false);
   }, [id]);
 
   return (

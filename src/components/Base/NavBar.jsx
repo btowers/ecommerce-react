@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   AppBar,
@@ -10,13 +10,17 @@ import {
   Button,
   MenuItem,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CartWidget from "../Cart/CartWidget";
+import { CartContext } from "../../context/CartContext";
 
 const pages = ["jewelery", "electronics"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const navigate = useNavigate();
+  const { itemsInCart } = useContext(CartContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -26,16 +30,14 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
 
-  const goHome = () => {
-    window.location.href = "/";
-  };
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            onClick={goHome}
+            onClick={() => {
+              navigate("/");
+            }}
             variant="h6"
             noWrap
             component="div"
@@ -95,16 +97,17 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                href={`/category/${page}`}
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => {
+                  navigate(`/category/${page}`);
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          <CartWidget />
+          {itemsInCart.length > 0 ? <CartWidget /> : null}
         </Toolbar>
       </Container>
     </AppBar>

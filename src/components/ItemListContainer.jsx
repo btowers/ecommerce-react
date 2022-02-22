@@ -1,28 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import ItemList from "./ItemList";
-import Loading from "./Base/Loading";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/firebaseConfig';
+import ItemList from './ItemList';
+import Loading from './Base/Loading';
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const params = useParams();
-  let category = "";
-  if (params.category) category = "category/" + params.category;
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get("https://fakestoreapi.com/products/" + category)
-      .then((res) => {
-        setItems(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
+
+    const getProducts = async () => {
+      let q;
+      if (params.category) {
+        q = query(
+          collection(db, 'ItemCollection'),
+          where('category', '==', params.category)
+        );
+      } else {
+        q = query(collection(db, 'ItemCollection'));
+      }
+      let docs = [];
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
       });
-  }, [category]);
+      console.log(docs);
+      setItems(docs);
+    };
+    getProducts();
+    setLoading(false);
+  }, [params]);
 
   return <>{loading ? <Loading /> : <ItemList items={items} />}</>;
 };

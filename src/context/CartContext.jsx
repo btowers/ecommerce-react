@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
@@ -17,7 +17,6 @@ export const CartProvider = ({ children }) => {
       updatedCart.push({ ...product, quantity });
     }
     setItemsInCart(updatedCart);
-    console.log(updatedCart);
   };
 
   const removeItem = (id) => {
