@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 import {
   Box,
   AppBar,
@@ -9,13 +9,13 @@ import {
   Container,
   Button,
   MenuItem,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
-import CartWidget from "../Cart/CartWidget";
-import { CartContext } from "../../context/CartContext";
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import CartWidget from '../Cart/CartWidget';
+import { CartContext } from '../../context/CartContext';
 
-const pages = ["jewelery", "electronics"];
+const pages = ['camisetas', 'medias'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,21 +36,21 @@ const NavBar = () => {
         <Toolbar disableGutters>
           <Typography
             onClick={() => {
-              navigate("/");
+              navigate('/');
             }}
             variant="h6"
             noWrap
             component="div"
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
-              cursor: "pointer",
+              display: { xs: 'none', md: 'flex' },
+              cursor: 'pointer',
             }}
           >
             eCommerce
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -65,18 +65,18 @@ const NavBar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: 'bottom',
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
+                vertical: 'top',
+                horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
@@ -90,18 +90,18 @@ const NavBar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
             eCommerce
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={() => {
                   navigate(`/category/${page}`);
                 }}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>

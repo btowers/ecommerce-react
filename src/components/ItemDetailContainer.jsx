@@ -33,7 +33,6 @@ const ItemDetailContainer = () => {
         collection(db, 'ItemCollection'),
         where(documentId(), '==', id)
       );
-      console.log('getting docs');
       const querySnapshot = await getDocs(q);
       if (querySnapshot.empty) {
         console.log('No matching documents.');

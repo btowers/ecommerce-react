@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 import {
   Card,
   Typography,
@@ -9,8 +9,8 @@ import {
   Rating,
   Container,
   Button,
-} from "@mui/material";
-import ItemCount from "./ItemCount";
+} from '@mui/material';
+import ItemCount from './ItemCount';
 
 const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
   const [finish, setFinish] = useState(false);
@@ -24,8 +24,7 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
 
   const navigate = useNavigate();
   const goToCart = () => {
-    console.log("navigate to cart");
-    navigate("/cart");
+    navigate('/cart');
   };
 
   return (
@@ -34,11 +33,11 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
         <Card
           className="m-3 p-3"
           sx={{
-            height: "100%",
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            maxWidth: "800px",
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            maxWidth: '800px',
           }}
         >
           <CardMedia
@@ -49,9 +48,9 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
           />
           <CardContent
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
               flexGrow: 1,
             }}
           >
