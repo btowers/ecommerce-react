@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CartWidget from "../Cart/CartWidget";
 import { CartContext } from "../../context/CartContext";
 
-const pages = ["camisetas", "medias"];
+const pages = ["futbol", "running", "tenis"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -48,7 +48,12 @@ const NavBar = () => {
               height={60}
             />
           </Link>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -84,14 +89,6 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            eCommerce
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button

@@ -3,6 +3,7 @@ import React from "react";
 import NavBar from "./components/Base/NavBar";
 import Home from "./views/Home/Home";
 import Cart from "./views/Cart/Cart";
+import Checkout from "./views/Checkout/Checkout";
 import ItemDetail from "./views/ItemDetail/ItemDetail";
 import { CartProvider } from "./context/CartContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -21,6 +22,7 @@ function App() {
             <Route path="/category/:category" element={<Home />} />
             <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
           <Footer />
         </Router>

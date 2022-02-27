@@ -26,6 +26,9 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
   const goToCart = () => {
     navigate("/cart");
   };
+  const goToCheckout = () => {
+    navigate("/checkout");
+  };
 
   return (
     <>
@@ -75,9 +78,9 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => goToCart()}
+                    onClick={() => goToCheckout()}
                   >
-                    Finalizar Compra
+                    Comprar Carrito
                   </Button>
                 </div>
               </>
