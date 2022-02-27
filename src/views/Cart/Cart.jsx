@@ -70,6 +70,7 @@ const Cart = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
+                  <TableCell></TableCell>
                   <TableCell>Nombre</TableCell>
                   <TableCell align="right">Precio</TableCell>
                   <TableCell align="right">Cantidad</TableCell>
@@ -82,6 +83,15 @@ const Cart = () => {
                     key={row.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
+                    <TableCell component="th" scope="row">
+                      <img
+                        src={row.pictureUrl}
+                        width="80"
+                        height="80"
+                        alt={row.title}
+                        loading="lazy"
+                      />
+                    </TableCell>
                     <TableCell component="th" scope="row">
                       {row.title}
                     </TableCell>
@@ -112,16 +122,38 @@ const Cart = () => {
           </div>
         ) : (
           <div>
-            <Button
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Ver Productos
-            </Button>
             <Typography align="center">
               No hay productos en el carrito
             </Typography>
+            <Container
+              maxWidth="md"
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src="https://pedidos.mostazagreenburger.com/static/images/cart/empty_cart.png"
+                alt="empty cart"
+              />
+            </Container>
+            <Container
+              maxWidth="md"
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => navigate("/")}
+              >
+                Ir a la tienda
+              </Button>
+            </Container>
           </div>
         )}
       </Container>

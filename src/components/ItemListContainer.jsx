@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../firebase/firebaseConfig';
-import ItemList from './ItemList';
-import Loading from './Base/Loading';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
+import ItemList from "./ItemList";
+import Loading from "./Base/Loading";
+import ItemsCarousel from "./Base/Carousel";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -17,11 +18,11 @@ const ItemListContainer = () => {
       let q;
       if (params.category) {
         q = query(
-          collection(db, 'ItemCollection'),
-          where('category', '==', params.category)
+          collection(db, "ItemCollection"),
+          where("category", "==", params.category)
         );
       } else {
-        q = query(collection(db, 'ItemCollection'));
+        q = query(collection(db, "ItemCollection"));
       }
       let docs = [];
       const querySnapshot = await getDocs(q);
@@ -34,7 +35,18 @@ const ItemListContainer = () => {
     setLoading(false);
   }, [params]);
 
-  return <>{loading ? <Loading /> : <ItemList items={items} />}</>;
+  return (
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div>
+          <ItemsCarousel />
+          <ItemList items={items} />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default ItemListContainer;

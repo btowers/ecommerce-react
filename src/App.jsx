@@ -8,6 +8,7 @@ import { CartProvider } from "./context/CartContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SimpleSnackbar from "./components/Base/Snackbar";
 import { NotificationProvider } from "./context/NotificationContext";
+import Footer from "./components/Base/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
+          <Footer />
         </Router>
         <SimpleSnackbar />
       </CartProvider>

@@ -5,7 +5,7 @@ import Item from "./Item";
 const ItemList = ({ items }) => {
   return (
     <>
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container maxWidth="md">
         <Grid container spacing={4}>
           {items.map((item) => (
             <Item
