@@ -51,7 +51,7 @@ No.
 
 #### ¿De donde se obtienen la información de los productos del eCommerce?
 
-Son productos hardcodeados en Firebase.
+Son productos ficticios en Firebase.
 
 
 ## Licencia
