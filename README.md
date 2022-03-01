@@ -30,6 +30,22 @@ Iniciar el servidor de desarrollo
   npm run start
 ```
 
+## Variables de Entorno
+
+Es necesario crea un archivo .env en el path base del proyecto con las siguientes variables de entorno con las credenciales que le proveerá Firebase cuando cree su aplicación en la plataforma:
+
+REACT_APP_apiKey
+
+REACT_APP_authDomain
+
+REACT_APP_projectId
+
+REACT_APP_storageBucket
+
+REACT_APP_messagingSenderId
+
+REACT_APP_appId
+
 ## Tech Stack
 
 **Client:** React
