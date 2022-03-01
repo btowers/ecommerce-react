@@ -1,6 +1,6 @@
-import Grid from "@mui/material/Grid";
-import { Container } from "@mui/material";
-import Item from "./Item";
+import Grid from '@mui/material/Grid';
+import { Container } from '@mui/material';
+import Item from './Item';
 
 const ItemList = ({ items }) => {
   return (
@@ -12,6 +12,7 @@ const ItemList = ({ items }) => {
               pictureUrl={item.image}
               price={item.price}
               title={item.title}
+              rating={item.rating}
               id={item.id}
               key={item.id}
             />

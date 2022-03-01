@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 import {
   Box,
   AppBar,
@@ -9,13 +9,13 @@ import {
   Container,
   Button,
   MenuItem,
-} from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
-import CartWidget from "../Cart/CartWidget";
-import { CartContext } from "../../context/CartContext";
+} from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import CartWidget from '../Cart/CartWidget';
+import { CartContext } from '../../context/CartContext';
 
-const pages = ["futbol", "running", "tenis"];
+const pages = ['futbol', 'running', 'tenis'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,23 +35,18 @@ const NavBar = () => {
       position="static"
       elevation={2}
       sx={{
-        backgroundColor: "#0182CF",
+        backgroundColor: '#0182CF',
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-            <img
-              src="https://seeklogo.com/images/S/sports-logo-BB73BFD7B1-seeklogo.com.png"
-              alt="logo"
-              width={60}
-              height={60}
-            />
+            <img src="/assets/logo.png" alt="logo" width={60} height={60} />
           </Link>
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "flex", md: "none" },
+              display: { xs: 'flex', md: 'none' },
             }}
           >
             <IconButton
@@ -68,18 +63,18 @@ const NavBar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: 'bottom',
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
+                vertical: 'top',
+                horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
@@ -89,14 +84,14 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={() => {
                   navigate(`/category/${page}`);
                 }}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>

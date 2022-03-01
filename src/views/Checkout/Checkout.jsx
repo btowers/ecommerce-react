@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
-import { NotificationContext } from "../../context/NotificationContext";
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
+import { NotificationContext } from '../../context/NotificationContext';
 import {
   Box,
   Container,
@@ -11,15 +11,15 @@ import {
   StepLabel,
   Button,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
-import AddressForm from "./AddressForm";
-import Review from "./Review";
-import { db } from "../../firebase/firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
-import EmptyCart from "../../components/Cart/EmptyCart";
+import AddressForm from './AddressForm';
+import Review from './Review';
+import { db } from '../../firebase/firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
+import EmptyCart from '../../components/Cart/EmptyCart';
 
-const steps = ["Envío", "Confirmación"];
+const steps = ['Envío', 'Confirmación'];
 
 function getStepContent(step, address, setAddress) {
   switch (step) {
@@ -28,26 +28,26 @@ function getStepContent(step, address, setAddress) {
     case 1:
       return <Review address={address} />;
     default:
-      throw new Error("Unknown step");
+      throw new Error('Unknown step');
   }
 }
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [orderId, setOrderId] = useState("");
+  const [orderId, setOrderId] = useState('');
   const { itemsInCart, clear } = useContext(CartContext);
   const { newNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
 
   const [address, setAddress] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    direccion: "",
-    ciudad: "",
-    provincia: "",
-    pais: "",
-    cp: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    direccion: '',
+    ciudad: '',
+    provincia: '',
+    pais: '',
+    cp: '',
   });
 
   const handleNext = () => {
@@ -76,7 +76,7 @@ const Checkout = () => {
       items,
       date: new Date().toLocaleDateString(),
     };
-    const orderRef = collection(db, "OrderCollection");
+    const orderRef = collection(db, 'OrderCollection');
 
     addDoc(orderRef, order)
       .then(({ id }) => {
@@ -98,7 +98,7 @@ const Checkout = () => {
   return (
     <>
       <Container sx={{ py: 3 }} maxWidth="md">
-        {itemsInCart.length > 0 ? (
+        {itemsInCart.length > 0 && activeStep != steps.length ? (
           <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
             <Paper
               variant="outlined"
@@ -122,22 +122,22 @@ const Checkout = () => {
                     </Typography>
                     <Typography variant="subtitle1">
                       Su pedido ha sido confirmado con el ID:
-                      <b>{" " + orderId}</b>.
+                      <b>{' ' + orderId}</b>.
                     </Typography>
                     <Container
                       sx={{
                         mt: 6,
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        width: "100%",
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '100%',
                       }}
                     >
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={() => navigate("/")}
+                        onClick={() => navigate('/')}
                       >
                         Volver a la tienda
                       </Button>
@@ -146,7 +146,7 @@ const Checkout = () => {
                 ) : (
                   <>
                     {getStepContent(activeStep, address, setAddress)}
-                    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                       {activeStep !== 0 && (
                         <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
                           Atras
@@ -159,8 +159,8 @@ const Checkout = () => {
                         sx={{ mt: 3, ml: 1 }}
                       >
                         {activeStep === steps.length - 1
-                          ? "Confirmar Compra"
-                          : "Siguiente"}
+                          ? 'Confirmar Compra'
+                          : 'Siguiente'}
                       </Button>
                     </Box>
                   </>

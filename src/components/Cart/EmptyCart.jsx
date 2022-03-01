@@ -1,5 +1,5 @@
-import { Container, Grid, Typography, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Container, Grid, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const EmptyCart = () => {
   const navigate = useNavigate();
@@ -7,9 +7,9 @@ const EmptyCart = () => {
     <Container
       maxWidth="md"
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <Grid
@@ -17,26 +17,23 @@ const EmptyCart = () => {
         columns={1}
         direction="column"
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
         }}
       >
         <Grid item>
           <Typography align="center">No hay productos en el carrito</Typography>
         </Grid>
         <Grid item>
-          <img
-            src="https://pedidos.mostazagreenburger.com/static/images/cart/empty_cart.png"
-            alt="empty cart"
-          />
+          <img src="/assets/empty_cart.png" alt="empty cart" />
         </Grid>
         <Grid item>
           <Button
             variant="contained"
             color="primary"
-            onClick={() => navigate("/")}
+            onClick={() => navigate('/')}
           >
             Ir a la tienda
           </Button>

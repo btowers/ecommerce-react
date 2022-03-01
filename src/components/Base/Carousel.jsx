@@ -1,20 +1,20 @@
-import React from "react";
-import Carousel from "react-material-ui-carousel";
-import { Container } from "@mui/material";
+import React from 'react';
+import Carousel from 'react-material-ui-carousel';
+import { Container } from '@mui/material';
 
 function ItemsCarousel(props) {
   var items = [
     {
-      title: "Futbol",
-      link: "https://solodeportes-9bvc3m9qgmf6g9x.stackpathdns.com/media/catalog/category/banner_categoria_-_deportes_-_F_tbol.jpg",
+      title: 'Futbol',
+      link: '/assets/futbol.jpeg',
     },
     {
-      title: "Running",
-      link: "https://solodeportes-9bvc3m9qgmf6g9x.stackpathdns.com/media/catalog/category/banner_categoria_-_deportes_-_running_2.jpg",
+      title: 'Running',
+      link: '/assets/running.jpeg',
     },
     {
-      title: "Tenis",
-      link: "https://solodeportes-9bvc3m9qgmf6g9x.stackpathdns.com/media/catalog/category/banner_categoria_-_deportes_-_Tenis.jpg",
+      title: 'Tenis',
+      link: '/assets/tenis.jpeg',
     },
   ];
 
@@ -38,11 +38,11 @@ function Item({ item }) {
       elevation={0}
       sx={{
         p: 2,
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
       }}
     >
       <img height={200} src={item.link} alt={item.title} borderRadius={3} />

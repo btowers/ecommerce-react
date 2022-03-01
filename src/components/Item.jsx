@@ -1,33 +1,35 @@
 import {
-  Button,
   Card,
   CardMedia,
   Grid,
-  CardActions,
+  Rating,
   CardContent,
   Typography,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+} from '@mui/material';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Item = ({ id, title, price, pictureUrl }) => {
-  let media = {
-    paddingTop: "56.25%",
-  };
+const Item = ({ id, title, price, rating, pictureUrl }) => {
+  const [shadow, setShadow] = useState(0);
+
   return (
     <>
       <Grid item key={id} xs={12} sm={6} md={4}>
-        <Link style={{ textDecoration: "none" }} to={`/item/${id}`} key={id}>
+        <Link style={{ textDecoration: 'none' }} to={`/item/${id}`} key={id}>
           <Card
-            elevation={0}
+            onMouseOver={() => setShadow(5)}
+            onMouseOut={() => setShadow(0)}
+            elevation={shadow}
             variant="outlined"
             sx={{
-              border: "1px solid #E0E0E0",
-              height: "100%",
+              boxShadow: shadow,
+              border: '1px solid #E0E0E0',
+              height: '100%',
             }}
           >
             <CardMedia
+              height="300px"
               component="img"
-              className={media}
               image={pictureUrl}
               alt={title}
             />
@@ -35,11 +37,9 @@ const Item = ({ id, title, price, pictureUrl }) => {
               <Typography noWrap gutterBottom variant="h5">
                 {title}
               </Typography>
+              <Rating name="size-small" value={rating.rate} size="small" />
               <Typography>${price}</Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small">Ver Detalles</Button>
-            </CardActions>
           </Card>
         </Link>
       </Grid>
