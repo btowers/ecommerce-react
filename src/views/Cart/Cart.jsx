@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Table,
   TableBody,
@@ -10,13 +10,13 @@ import {
   IconButton,
   Typography,
   Button,
-} from "@mui/material";
-import { CartContext } from "../../context/CartContext";
-import { DeleteOutline, ShoppingCartCheckout } from "@mui/icons-material";
-import EmptyCart from "../../components/Cart/EmptyCart";
+} from '@mui/material';
+import { CartContext } from '../../context/CartContext';
+import { DeleteOutline, ShoppingCartCheckout } from '@mui/icons-material';
+import EmptyCart from '../../components/Cart/EmptyCart';
 
 const Cart = () => {
-  const { itemsInCart, removeItem, clear } = useContext(CartContext);
+  const { itemsInCart, removeItem } = useContext(CartContext);
   const navigate = useNavigate();
 
   const totalPrice = () => {
@@ -26,7 +26,7 @@ const Cart = () => {
   };
 
   const goToCheckout = () => {
-    navigate("/checkout");
+    navigate('/checkout');
   };
 
   return (
@@ -35,9 +35,9 @@ const Cart = () => {
         <Typography variant="h5" sx={{ mb: 2 }}>
           <ShoppingCartCheckout
             sx={{
-              color: "#0182CF",
+              color: '#0182CF',
             }}
-          />{" "}
+          />{' '}
           Carrito
         </Typography>
         {itemsInCart.length > 0 ? (
@@ -56,7 +56,7 @@ const Cart = () => {
                 {itemsInCart.map((row) => (
                   <TableRow
                     key={row.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
                       <img

@@ -45,7 +45,7 @@ function Item({ item }) {
         justifyContent: 'center',
       }}
     >
-      <img height={200} src={item.link} alt={item.title} borderRadius={3} />
+      <img height={200} src={item.link} alt={item.title} />
     </Container>
   );
 }

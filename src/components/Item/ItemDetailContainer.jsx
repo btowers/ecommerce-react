@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ItemDetail from './ItemDetail';
-import Loading from './Base/Loading';
+import Loading from '../Base/Loading';
 import { useParams } from 'react-router-dom';
-import { db } from '../firebase/firebaseConfig';
+import { db } from '../../firebase/firebaseConfig';
+import ItemNotFound from './ItemNotFound';
 import {
   collection,
   query,
@@ -13,6 +14,7 @@ import {
 
 const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(false);
+  const [noItem, setNoItem] = useState(false);
   const [item, setItem] = useState({
     title: '',
     price: 0,
@@ -36,10 +38,13 @@ const ItemDetailContainer = () => {
       const querySnapshot = await getDocs(q);
       if (querySnapshot.empty) {
         console.log('No matching documents.');
+        setNoItem(true);
+        setLoading(false);
         return;
       }
       const product = querySnapshot.docs[0].data();
       setItem({ ...product, id });
+      setNoItem(false);
       setLoading(false);
     };
     getProduct();
@@ -49,6 +54,8 @@ const ItemDetailContainer = () => {
     <>
       {loading ? (
         <Loading />
+      ) : noItem ? (
+        <ItemNotFound />
       ) : (
         <ItemDetail
           id={item.id}

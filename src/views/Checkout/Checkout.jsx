@@ -88,7 +88,6 @@ const Checkout = () => {
         setOrderId(id);
         newNotification(`Orden ${id} creada`);
         setActiveStep(activeStep + 1);
-        console.log(id);
       })
       .catch((error) => {
         setLoading(false);

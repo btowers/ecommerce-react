@@ -20,7 +20,6 @@ const Item = ({ id, title, price, rating, pictureUrl }) => {
             onMouseOver={() => setShadow(5)}
             onMouseOut={() => setShadow(0)}
             elevation={shadow}
-            variant="outlined"
             sx={{
               boxShadow: shadow,
               border: '1px solid #E0E0E0',

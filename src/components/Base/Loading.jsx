@@ -5,7 +5,6 @@ function Loading() {
   return (
     <>
       <Container
-        minWidth="md"
         style={{ minHeight: '60vh' }}
         sx={{
           display: 'flex',
