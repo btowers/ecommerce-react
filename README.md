@@ -2,6 +2,9 @@
 
 # Proyecto Final React - Coderhouse
 
+
+## Descripción
+
 Frontend realizado en React.js como proyecto final para el curso de Coderhouse.
 
 
