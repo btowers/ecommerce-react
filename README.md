@@ -1,3 +1,4 @@
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png" width="150px" align="right" />
 
 # Proyecto Final React - Coderhouse
 
