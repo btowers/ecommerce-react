@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import {
   Box,
   AppBar,
@@ -10,17 +9,16 @@ import {
   Button,
   MenuItem,
 } from '@mui/material';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CartWidget from '../Cart/CartWidget';
-import { CartContext } from '../../context/CartContext';
 
 const pages = ['futbol', 'running', 'tenis'];
 
 const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
   const navigate = useNavigate();
-  const { itemsInCart } = useContext(CartContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -97,7 +95,7 @@ const NavBar = () => {
               </Button>
             ))}
           </Box>
-          {itemsInCart.length > 0 ? <CartWidget /> : null}
+          <CartWidget />
         </Toolbar>
       </Container>
     </AppBar>

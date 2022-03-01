@@ -1,16 +1,19 @@
-import React from "react";
-import { Container, CircularProgress } from "@mui/material";
+import React from 'react';
+import { Container, CircularProgress } from '@mui/material';
 
 function Loading() {
   return (
     <>
       <Container
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        style={{ minHeight: "100vh" }}
+        minWidth="md"
+        style={{ minHeight: '60vh' }}
+        sx={{
+          display: 'flex',
+          direction: 'column',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
         <CircularProgress />
       </Container>

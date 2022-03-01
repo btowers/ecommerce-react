@@ -12,6 +12,7 @@ import {
   Button,
   Typography,
 } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import AddressForm from './AddressForm';
 import Review from './Review';
@@ -33,7 +34,8 @@ function getStepContent(step, address, setAddress) {
 }
 
 const Checkout = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [orderId, setOrderId] = useState('');
   const { itemsInCart, clear } = useContext(CartContext);
   const { newNotification } = useContext(NotificationContext);
@@ -59,6 +61,7 @@ const Checkout = () => {
   };
 
   const buyItems = async () => {
+    setLoading(true);
     const total = itemsInCart.reduce((totalt, item) => {
       return totalt + item.price;
     }, 0);
@@ -81,12 +84,14 @@ const Checkout = () => {
     addDoc(orderRef, order)
       .then(({ id }) => {
         clear();
+        setLoading(false);
         setOrderId(id);
         newNotification(`Orden ${id} creada`);
         setActiveStep(activeStep + 1);
         console.log(id);
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   };
@@ -98,7 +103,9 @@ const Checkout = () => {
   return (
     <>
       <Container sx={{ py: 3 }} maxWidth="md">
-        {itemsInCart.length > 0 && activeStep != steps.length ? (
+        {itemsInCart.length === 0 && activeStep !== steps.length ? (
+          <EmptyCart />
+        ) : (
           <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
             <Paper
               variant="outlined"
@@ -153,7 +160,8 @@ const Checkout = () => {
                         </Button>
                       )}
 
-                      <Button
+                      <LoadingButton
+                        loading={loading}
                         variant="contained"
                         onClick={handleNext}
                         sx={{ mt: 3, ml: 1 }}
@@ -161,15 +169,13 @@ const Checkout = () => {
                         {activeStep === steps.length - 1
                           ? 'Confirmar Compra'
                           : 'Siguiente'}
-                      </Button>
+                      </LoadingButton>
                     </Box>
                   </>
                 )}
               </>
             </Paper>
           </Container>
-        ) : (
-          <EmptyCart />
         )}
       </Container>
     </>

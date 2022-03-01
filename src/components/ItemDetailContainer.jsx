@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
+  const [loading, setLoading] = useState(false);
   const [item, setItem] = useState({
     title: '',
     price: 0,
@@ -21,7 +22,6 @@ const ItemDetailContainer = () => {
       count: 0,
     },
   });
-  const [loading, setLoading] = useState(false);
 
   let params = useParams();
   let id = params.id;
@@ -40,9 +40,9 @@ const ItemDetailContainer = () => {
       }
       const product = querySnapshot.docs[0].data();
       setItem({ ...product, id });
+      setLoading(false);
     };
     getProduct();
-    setLoading(false);
   }, [id]);
 
   return (
@@ -54,6 +54,8 @@ const ItemDetailContainer = () => {
           id={item.id}
           title={item.title}
           price={item.price}
+          stock={item.stock}
+          description={item.description}
           pictureUrl={item.image}
           rating={item.rating.rate}
         />

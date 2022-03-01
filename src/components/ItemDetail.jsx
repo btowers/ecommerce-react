@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 import {
   Card,
   Typography,
@@ -9,10 +9,18 @@ import {
   Rating,
   Container,
   Button,
-} from "@mui/material";
-import ItemCount from "./ItemCount";
+} from '@mui/material';
+import ItemCount from './ItemCount';
 
-const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
+const ItemDetail = ({
+  id,
+  title,
+  price,
+  stock,
+  rating,
+  description,
+  pictureUrl,
+}) => {
   const [finish, setFinish] = useState(false);
 
   const { addItem } = useContext(CartContext);
@@ -24,25 +32,25 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
 
   const navigate = useNavigate();
   const goToCart = () => {
-    navigate("/cart");
+    navigate('/cart');
   };
   const goToCheckout = () => {
-    navigate("/checkout");
+    navigate('/checkout');
   };
 
   return (
     <>
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container sx={{ py: 6 }} maxWidth="md">
         <Card
           elevation={0}
           className="m-3 p-3"
           sx={{
             //  border: "1px solid #E0E0E0",
-            height: "100%",
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            maxWidth: "800px",
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            maxWidth: '800px',
           }}
         >
           <CardMedia
@@ -56,15 +64,18 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
           />
           <CardContent
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
               flexGrow: 1,
             }}
           >
             <div>
-              <Typography variant="h4" component="h2">
+              <Typography variant="h5" component="h2">
                 {title}
+              </Typography>
+              <Typography variant="body-2">
+                {stock} unindades disponibles
               </Typography>
               <Typography variant="h6">$ {price}</Typography>
               <Rating name="size-small" value={rating} size="medium" />
@@ -77,7 +88,7 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
                   <div>
                     <Button
                       sx={{
-                        width: "100%",
+                        width: '100%',
                         mb: 2,
                       }}
                       variant="outlined"
@@ -90,7 +101,7 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
                   <div>
                     <Button
                       sx={{
-                        width: "100%",
+                        width: '100%',
                       }}
                       variant="contained"
                       color="primary"
@@ -98,7 +109,7 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
                     >
                       Comprar Carrito
                     </Button>
-                  </div>{" "}
+                  </div>{' '}
                 </div>
               </>
             ) : (
@@ -106,6 +117,9 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
             )}
           </CardContent>
         </Card>
+        <Container sx={{ py: 2 }} maxWidth="md">
+          {description}
+        </Container>
       </Container>
     </>
   );
