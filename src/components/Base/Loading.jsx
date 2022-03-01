@@ -1,10 +1,10 @@
 import React from "react";
-import { Grid, CircularProgress } from "@mui/material";
+import { Container, CircularProgress } from "@mui/material";
 
 function Loading() {
   return (
     <>
-      <Grid
+      <Container
         container
         spacing={0}
         direction="column"
@@ -13,7 +13,7 @@ function Loading() {
         style={{ minHeight: "100vh" }}
       >
         <CircularProgress />
-      </Grid>
+      </Container>
     </>
   );
 }

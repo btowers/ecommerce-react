@@ -10,34 +10,29 @@ import {
 import { Link } from "react-router-dom";
 
 const Item = ({ id, title, price, pictureUrl }) => {
+  let media = {
+    paddingTop: "56.25%",
+  };
   return (
     <>
       <Grid item key={id} xs={12} sm={6} md={4}>
-        <Link to={`/item/${id}`} key={id}>
+        <Link style={{ textDecoration: "none" }} to={`/item/${id}`} key={id}>
           <Card
+            elevation={0}
             variant="outlined"
             sx={{
+              border: "1px solid #E0E0E0",
               height: "100%",
-              display: "flex",
-              flexDirection: "column",
             }}
           >
             <CardMedia
               component="img"
-              sx={{ width: 200, height: 200 }}
+              className={media}
               image={pictureUrl}
               alt={title}
             />
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography
-                noWrap
-                gutterBottom
-                variant="h5"
-                component="h2"
-                sx={{
-                  textDecoration: "none",
-                }}
-              >
+            <CardContent>
+              <Typography noWrap gutterBottom variant="h5">
                 {title}
               </Typography>
               <Typography>${price}</Typography>

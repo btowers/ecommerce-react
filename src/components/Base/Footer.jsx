@@ -1,26 +1,47 @@
-import { Box } from "@mui/material";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 
-function Footer() {
+function Copyright() {
   return (
-    <footer
-      style={{
-        marginTop: 12,
-        color: "gray",
-        bottom: 0,
-        backgroundColor: "#0182CF",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          width: "100%",
-        }}
-      >
-        Hola
-      </Box>
-    </footer>
+    <Typography variant="body2" color="text.secondary">
+      {"Copyright © "}
+      <Link color="inherit" href="https://briansportecommerce.com/">
+        Brian Sports eCommerce
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   );
 }
 
-export default Footer;
+export default function Footer() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "80vh",
+      }}
+    >
+      <Box
+        component="footer"
+        sx={{
+          py: 3,
+          px: 2,
+          mt: "auto",
+          backgroundColor: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.grey[200]
+              : theme.palette.grey[800],
+        }}
+      >
+        <Container maxWidth="sm">
+          <Copyright />
+        </Container>
+      </Box>
+    </Box>
+  );
+}

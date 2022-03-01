@@ -34,8 +34,10 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
     <>
       <Container sx={{ py: 8 }} maxWidth="md">
         <Card
+          elevation={0}
           className="m-3 p-3"
           sx={{
+            //  border: "1px solid #E0E0E0",
             height: "100%",
             display: "flex",
             flexDirection: "row",
@@ -45,7 +47,10 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
         >
           <CardMedia
             component="img"
-            sx={{ width: 400, height: 400 }}
+            sx={{
+              width: 400,
+              height: 400,
+            }}
             image={pictureUrl}
             alt={title}
           />
@@ -67,21 +72,33 @@ const ItemDetail = ({ id, title, price, rating, pictureUrl }) => {
             {finish ? (
               <>
                 <Typography>item(s) agregado(s) al carrito</Typography>
+
                 <div>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={() => goToCart()}
-                  >
-                    Ver Carrito
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => goToCheckout()}
-                  >
-                    Comprar Carrito
-                  </Button>
+                  <div>
+                    <Button
+                      sx={{
+                        width: "100%",
+                        mb: 2,
+                      }}
+                      variant="outlined"
+                      color="primary"
+                      onClick={() => goToCart()}
+                    >
+                      Ver Carrito
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      sx={{
+                        width: "100%",
+                      }}
+                      variant="contained"
+                      color="primary"
+                      onClick={() => goToCheckout()}
+                    >
+                      Comprar Carrito
+                    </Button>
+                  </div>{" "}
                 </div>
               </>
             ) : (

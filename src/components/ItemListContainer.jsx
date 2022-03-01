@@ -37,14 +37,8 @@ const ItemListContainer = () => {
 
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div>
-          <ItemsCarousel />
-          <ItemList items={items} />
-        </div>
-      )}
+      <ItemsCarousel />
+      {loading ? <Loading /> : <ItemList items={items} />}
     </>
   );
 };
