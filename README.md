@@ -28,7 +28,7 @@ Instalar dependencias
   npm install
 ```
 
-Iniciar el servidor
+Iniciar el servidor de desarrollo
 
 ```bash
   npm run start
