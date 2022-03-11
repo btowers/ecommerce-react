@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
+  apiKey: 'AIzaSyDADpDzh-RuTuQf9LI3Gcm1TQ7vlXaIwTw',
+  authDomain: 'ecommerce-towers.firebaseapp.com',
+  projectId: 'ecommerce-towers',
+  storageBucket: 'ecommerce-towers.appspot.com',
+  messagingSenderId: '468944017435',
+  appId: '1:468944017435:web:e55cad2a10c38aa2d6c0be',
 };
 
 const app = initializeApp(firebaseConfig);
